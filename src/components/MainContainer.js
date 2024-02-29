@@ -8,7 +8,7 @@ function MainContainer() {
   const [portfolio, setPortfolio] = useState([])
   const [sortBy, setSortBy] = useState("Alphabetically")
   const [filterBy, setFilterBy] = useState("All")
-
+  const [inventory, setInventory] = useState(0)
   useEffect(() => {
 fetch("http://localhost:3001/stocks")
 .then(r=>r.json())
@@ -22,8 +22,10 @@ fetch("http://localhost:3001/stocks")
     
     if (!foundStock) {
     setPortfolio([...portfolio, addedStock])
+    //setInventory((parseFloat(inventory)-1))
     }
   }
+  console.log(portfolio)
 function handleRemoveStockFromPortfolio(removedStock) {
 const filteredPortfolio = portfolio.filter(
   stock => stock.id !== removedStock.id
